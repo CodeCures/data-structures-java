@@ -71,11 +71,23 @@ public class LinkedList {
         if (first.equals(last))
             first = last = null;
         else {
-            var previous = getPrevious();
-            last = previous;
+            last = getPrevious();
             last.next = null;
         }
         size--;
+    }
+
+    public int getNthFromTheEnd(int n){
+        var a = first;
+        var b  =  first;
+
+        for(var i = 0; i < n - 1; i++)
+            b = b.next;
+        while(b != last){
+            a = a.next;
+            b = b.next;
+        }
+        return a.value;
     }
 
     private Node getPrevious(){
